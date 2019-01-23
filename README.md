@@ -1,5 +1,5 @@
 Azure PowerShell scripts and resources
-==================
+======================================
 
 General Requirements
 --------------------
@@ -15,4 +15,8 @@ Scripts listing
 - Get-AzureEnvironment.ps1: getting all Azure environments 
 - Get-TimeZones.ps1: getting all timezones 
 
-# Create a resource group
+Comments
+--------
+Please fell free to contribute to these scripts. 
+Fork and Clone are also availables. 
+rodolphe
