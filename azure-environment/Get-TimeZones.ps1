@@ -1,0 +1,1 @@
+Get-TimeZone -ListAvailable | Select-Object DisplayName,StandardName | Sort-Object DisplayName
