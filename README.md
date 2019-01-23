@@ -1,1 +1,2 @@
-# azure-powershell
+Azure PowerShell scripts and resources
+==================
