@@ -4,6 +4,7 @@ Azure PowerShell scripts and resources
 General Requirements
 --------------------
 - Azure subscription 
+- Azure account and right permissions on subscription 
 
 Windows Specific Requirements
 -----------------------------
@@ -17,5 +18,5 @@ Scripts listing
 
 Comments
 --------
-- Please fell free to contribute to these scripts. 
+- Please feel free to contribute to these scripts. 
 - Fork and Clone are also availables. 
