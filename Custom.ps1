@@ -6,3 +6,6 @@ Set-ItemProperty -Path $UserKey -Name "IsInstalled" -Value 0
 Get-ScheduledTask -TaskName ServerManager | Disable-ScheduledTask 
 
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 00000000
+
+Set-Service -Name NetTcpPortSharing -StartupType Automatic 
+Start-Service -Name NetTcpPortSharing 
