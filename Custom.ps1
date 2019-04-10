@@ -31,17 +31,34 @@ New-NetFirewallRule -DisplayName "Allow inbound Port 4520" -Direction Inbound -L
 New-NetFirewallRule -DisplayName "Allow inbound Port 20000" -Direction Inbound -LocalPort 20000 -Protocol TCP -Action Allow 
 
 # suppression de l'expiration du password du compte Admin
-$Command = "cmd.exe wmic UserAccount where Name='adminroot' set PasswordExpires=False"
-Invoke-Command -Command:$Command
+# $Command = "cmd.exe wmic UserAccount where Name='adminroot' set PasswordExpires=False"
+# Invoke-Command -Command:$Command
+
+$disks = Get-Disk | Where-Object partitionstyle -eq 'raw' | Sort-Object number
+$letters = 70..89 | ForEach-Object { [char]$_ }
+$count = 0
+$labels = "Data01","Data02"
+
+foreach ($disk in $disks) {
+    $driveLetter = $letters[$count].ToString()
+    $disk | 
+    Initialize-Disk -PartitionStyle MBR -PassThru |
+    New-Partition -UseMaximumSize -DriveLetter $driveLetter |
+    Format-Volume -FileSystem NTFS -NewFileSystemLabel $labels[$count] -Confirm:$false -Force
+    $count++
+}
 
 # création du répertoire pour copier les sources en local 
 New-Item -Path "C:\" -Name "Sources" -ItemType "directory"
 
 # montage du Azure File Share
+$acctKey = ConvertTo-SecureString -String "rSIC4O6I+ynbkA8SQfHijBF6SIORKNpNpplzVO3U866/EhpNnpMLu3rZT3M2CZl6KUA68BZq6et+acOI+XkD0g==" -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\logepalsa", $acctKey
+New-PSDrive -Name S -PSProvider FileSystem -Root "\\logepalsa.file.core.windows.net\sources" -Credential $credential -Persist
 
 # copie des sources
-Copy-Item "S:\SQLEXPRESS2017\*.*" -Destination "C:\Sources" 
-Copy-Item "S:\SSMS\*.*" -Destination "C:\Sources" 
-Copy-Item "S:\SCRIPTS\*.*" -Destination "C:\Sources" 
+Copy-Item "S:\SQLEXPRESS2017\*.*" -Destination "C:\Sources" -Force
+Copy-Item "S:\SSMS\*.*" -Destination "C:\Sources" -Force
+Copy-Item "S:\SCRIPTS\*.*" -Destination "C:\Sources" -Force
 
 # déconnexion du map S: 
