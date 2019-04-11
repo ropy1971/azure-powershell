@@ -14,14 +14,6 @@ Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Syste
 Set-Service -Name NetTcpPortSharing -StartupType Automatic 
 Start-Service -Name NetTcpPortSharing 
 
-# installation de IIS (web-server) 
-# Install-WindowsFeature -Name Web-Server,Web-WebServer, `
-#                         Web-Common-Http,Web-Default-Doc,Web-Dir-Browsing,Web-Http-Errors, `
-#                         Web-Static-Content,Web-Health,Web-Http-Logging,Web-Performance,Web-Stat-Compression, `
-#                         Web-Security,Web-Filtering,Web-App-Dev,Web-Net-Ext,Web-Net-Ext45,Web-AppInit, `
-#                         Web-ASP,Web-Asp-Net,Web-Asp-Net45,Web-CGI,Web-ISAPI-Ext,Web-ISAPI-Filter, `
-#                         Web-Includes,Web-WebSockets,Web-Mgmt-Tools,Web-Mgmt-Compat,Web-Metabase
-
 # ajout des ports Firewall 
 New-NetFirewallRule -DisplayName "Allow inbound Port 80" -Direction Inbound -LocalPort 80 -Protocol TCP -Action Allow 
 New-NetFirewallRule -DisplayName "Allow inbound Port 443" -Direction Inbound -LocalPort 443 -Protocol TCP -Action Allow 
