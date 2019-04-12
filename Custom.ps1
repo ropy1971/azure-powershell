@@ -43,9 +43,6 @@ New-Item -Path "C:\Sources" -Name "SQLEXPRESS2017" -ItemType "directory"
 New-Item -Path "C:\Sources" -Name "SSSMS" -ItemType "directory"
 
 # montage du Azure File Share
-$acctKey = ConvertTo-SecureString -String "rSIC4O6I+ynbkA8SQfHijBF6SIORKNpNpplzVO3U866/EhpNnpMLu3rZT3M2CZl6KUA68BZq6et+acOI+XkD0g==" -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\logepalsa", $acctKey
-New-PSDrive -Name S -PSProvider FileSystem -Root "\\logepalsa.file.core.windows.net\sources" -Credential $credential -Persist
 
 # copie des sources
 Copy-Item "S:\SQLEXPRESS2017\*.*" -Destination "C:\Sources\SQLEXPRESS2017" -Force
