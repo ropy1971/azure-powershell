@@ -1,4 +1,4 @@
-$disks = Get-Disk | Where partitionstyle -eq 'raw' | sort number
+$disks = Get-Disk | Where-Object partitionstyle -eq 'raw' | Sort-Object number
 
     $letters = 70..89 | ForEach-Object { [char]$_ }
     $count = 0
