@@ -1,1 +1,1 @@
-This folder is containing template to write/edit/code PowerShell scripts dedicated to Azure platform.
+This folder is containing all templates used to edit/write documents/articles/scripts.
