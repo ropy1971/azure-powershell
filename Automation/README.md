@@ -1,2 +1,2 @@
 This folder is containing PowerShell scripts concerning Automation service on Azure.
-To get Runbooks, please visit this other repository:  
+To get more Runbooks, please visit this other repository:  

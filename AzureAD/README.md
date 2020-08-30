@@ -1,1 +1,1 @@
-This folder is containing PowerShell scripts for Azure AD (Active Directory).
+This folder is containing PowerShell scripts for Azure AD (Active Directory on Azure).
