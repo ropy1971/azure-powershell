@@ -1,1 +1,1 @@
-This folder is containing all templates used to edit/write documents/articles/scripts.
+This folder is containing templates used to edit/write documents/articles/scripts concerning this subject.
