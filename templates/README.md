@@ -1,13 +1,13 @@
-# templates
+# README.md
 
 ## introduction
 
 This folder is containing templates used to edit/write documents/articles/scripts concerning this subject.
 
-## templates listing
+## content
 
 ## comments
 
 ## license
 
-## last update: 2020.09.14
+## last update: 2021.06.26
